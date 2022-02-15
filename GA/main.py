@@ -11,7 +11,9 @@ Range = [-100, 100]
 tournament_size = 4
 generation = 50
 
-
+'''
+Use population and fitness as input and return the population and fitness of next generation.
+'''
 def next_generation(population, fitness):
     parent1, parent2 = parent_selection.tournament(population, fitness, tournament_size)
     #print(parent1, parent2)
