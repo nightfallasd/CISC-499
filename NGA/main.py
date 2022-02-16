@@ -1,6 +1,7 @@
 import initialization
 import evaluation
 import parent_selection
+import build
 
 import offspring_selection
 import reproduce
@@ -10,6 +11,8 @@ dimension = 10
 Range = [-100, 100]
 tournament_size = 4
 generation = 50
+m = 4
+m0 = 4
 
 
 def next_generation(population, fitness):
@@ -27,10 +30,13 @@ def next_generation(population, fitness):
 
 
 def main():
-    population = initialization.initializtion(dimension, Range[0], Range[1], population_size)
-    #print(population)
-    fitness = evaluation.evaluate(population)
-    print(fitness)
+    population = initialization.initialization(dimension, Range[0], Range[1], population_size)
+    # Here test for initialization
+    print("Test initialization")
+    for n in build.network:
+        print("id:", n.id, ", neighbour:", n.neighbour, ", fitness:", n.fitness)
+    # Stop here
+    exit()
     for i in range(generation):
         population, fitness = next_generation(population, fitness)
     #print(population)
