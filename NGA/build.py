@@ -74,6 +74,7 @@ def add(val):
                 neighbour_choose = j
                 # Append it to neighbour
                 neighbour.append(j.id)
+                j.neighbour.append(id)
                 break
         # Remove the chosen neighbour from the list
         choose.remove(neighbour_choose)
@@ -99,6 +100,7 @@ def remove(r_id):
     global sum_fitness
     # Initialize
     remove_i = -1
+
     for i in network:
         # Update neighbour of each individuals
         for k in i.neighbour:
@@ -108,6 +110,7 @@ def remove(r_id):
             # Record this individual
             remove_i = i
     # Update the sum of fitness
+
     sum_fitness -= remove_i.fitness
     # Remove this individual
     network.remove(remove_i)
