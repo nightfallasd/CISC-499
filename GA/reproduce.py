@@ -1,8 +1,6 @@
 import random
 
-'''
-do the one point crossover
-'''
+
 def crossover(parent1, parent2):
     offspring1 = []
     offspring2 = []
@@ -14,10 +12,9 @@ def crossover(parent1, parent2):
 
     return offspring1, offspring2
 
-'''
-do the one point mutation. 
-'''
-def mutation(offspring, upper_range, lower_range):
-    index = random.randint(0, len(offspring) - 1)
-    offspring[index] = random.uniform(upper_range, lower_range)
+
+def mutation(offspring, upper_range, lower_range, mutation_rate):
+    if random.random() <= mutation_rate:
+        index = random.randint(0, len(offspring) - 1)
+        offspring[index] = random.uniform(upper_range, lower_range)
     return offspring
