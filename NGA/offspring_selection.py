@@ -1,11 +1,11 @@
+
 import build
 
 
-def remove_worst():
+def remove_worst(remove_number):
     # sort the net
     net = build.network.copy()
     net.sort(key=lambda x: x.fitness)
-    remove_number = 2
     # remove the ones with the worst fitness
     while remove_number != 0:
         build.remove(net[0].id)
