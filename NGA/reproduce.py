@@ -1,6 +1,10 @@
 import random
 import build
 
+'''
+This function would do single point crossover
+'''
+
 
 def crossover(parent1):
     # get the index of all the neighbour of parent1
@@ -22,7 +26,10 @@ def crossover(parent1):
 '''
 This function do the single point mutation to the offspring
 '''
-def mutation(offspring, upper_range, lower_range):
-    index = random.randint(0, len(offspring) - 1)
-    offspring[index] = random.uniform(upper_range, lower_range)
+
+
+def mutation(offspring, upper_range, lower_range, mutation_rate):
+    if mutation_rate > random.random():
+        index = random.randint(0, len(offspring) - 1)
+        offspring[index] = random.uniform(upper_range, lower_range)
     return offspring
