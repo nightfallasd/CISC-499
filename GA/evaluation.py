@@ -1,4 +1,3 @@
-
 import math
 import random
 
@@ -22,8 +21,7 @@ def f1(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
-
+        return 1 / abs(result)
 
 
 def f2(vector):
@@ -33,7 +31,7 @@ def f2(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def f3(vector):
@@ -46,7 +44,7 @@ def f3(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def f4(vector):
@@ -56,7 +54,7 @@ def f4(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def f5(vector):
@@ -66,7 +64,7 @@ def f5(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def f6(vector):
@@ -79,7 +77,7 @@ def f6(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def f7(vector):
@@ -89,7 +87,7 @@ def f7(vector):
     if result == 0:
         return 0
     else:
-        return 1/abs(result)
+        return 1 / abs(result)
 
 
 def evaluate(population):
@@ -97,5 +95,3 @@ def evaluate(population):
     for vector in population:
         fitness.append(f1(vector))
     return fitness
-
-

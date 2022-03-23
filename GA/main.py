@@ -12,7 +12,7 @@ tournament_size = 4
 generation = 2000
 parents_number = 20
 mutation_rate = 0.9
-test_num = 1
+test_num = 50
 show_detail = True
 """
 This function return the next generation of the population
@@ -85,9 +85,15 @@ def run():
 
 def main():
     sum_fitness = 0
+    best_result = 9999999999
     for i in range(test_num):
-        sum_fitness += run()
+        result = run()
+        sum_fitness += result
+        if result < best_result:
+            best_result = result
+    print("The sum fitness is", sum_fitness)
     print("The average fitness is", sum_fitness / test_num)
+    print("The best result is", best_result)
 
 
 main()
