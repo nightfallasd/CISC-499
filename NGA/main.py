@@ -1,3 +1,4 @@
+
 import initialization
 import evaluation
 import parent_selection
@@ -8,7 +9,7 @@ import reproduce
 
 population_size = 125
 dimension = 30
-Range = [-600, 600]
+Range = [-32, 32]
 tournament_size = 5
 generation = 2000
 parent_number = 20
@@ -44,14 +45,28 @@ def main():
     for i in range(generation):
         generation_number += 1
         next_generation(tournament_size)
-
         if generation_number % 400 == 0:
-            # print the best individual
+            print("After", generation_number, "generations:")
             net = build.network.copy()
+            duplicate = []
+            
+            # count how many individuals are the same in the population
+            for j in range(population_size):
+                count = 0
+                for m in range(population_size):
+                    if net[j].val == net[m].val:
+                        count = count + 1
+                duplicate.append(count)
+                if count > population_size / 2:
+                    break
+            print(max(duplicate), "individuals in the population are the same")
+
+            # print the best individual
             net.sort(key=lambda x: x.fitness, reverse=True)
             print("After", generation_number, "generation:")
             print("The best individual is:", net[0].id, ", val:", net[0].val)
             print("The result is:", 1 / net[0].fitness)
+            print()
 
 
 main()
