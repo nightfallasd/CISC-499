@@ -38,7 +38,7 @@ def next_generation(size):
     offspring_selection.remove_worst(parent_number*2)
 
 
-def main():
+def runNGA():
     population = initialization.initialization(dimension, Range[0], Range[1], population_size)
     # let the population loop through generation
     generation_number = 0
@@ -67,6 +67,4 @@ def main():
             print("The best individual is:", net[0].id, ", val:", net[0].val)
             print("The result is:", 1 / net[0].fitness)
             print()
-
-
-main()
+    return 1 / net[0].fitness
