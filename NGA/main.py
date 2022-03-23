@@ -49,7 +49,7 @@ def main():
             print("After", generation_number, "generations:")
             net = build.network.copy()
             duplicate = []
-            
+
             # count how many individuals are the same in the population
             for j in range(population_size):
                 count = 0
