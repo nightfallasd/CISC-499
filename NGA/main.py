@@ -1,4 +1,3 @@
-
 import initialization
 import evaluation
 import parent_selection
@@ -38,35 +37,21 @@ def next_generation(size):
     offspring_selection.remove_worst(parent_number*2)
 
 
-def main():
+def runNGA():
     population = initialization.initialization(dimension, Range[0], Range[1], population_size)
     # let the population loop through generation
     generation_number = 0
     for i in range(generation):
         generation_number += 1
         next_generation(tournament_size)
-        if generation_number % 400 == 0:
-            print("After", generation_number, "generations:")
-            net = build.network.copy()
-            duplicate = []
-            
-            # count how many individuals are the same in the population
-            for j in range(population_size):
-                count = 0
-                for m in range(population_size):
-                    if net[j].val == net[m].val:
-                        count = count + 1
-                duplicate.append(count)
-                if count > population_size / 2:
-                    break
-            print(max(duplicate), "individuals in the population are the same")
 
+        if generation_number % 400 == 0:
             # print the best individual
+            net = build.network.copy()
             net.sort(key=lambda x: x.fitness, reverse=True)
             print("After", generation_number, "generation:")
             print("The best individual is:", net[0].id, ", val:", net[0].val)
             print("The result is:", 1 / net[0].fitness)
-            print()
+    return 1 / net[0].fitness
 
 
-main()
