@@ -117,7 +117,7 @@ The following function evaluates the fitness for a single vector
 
 
 def evaluate(vector):
-    return f1(vector)
+    return f2(vector)
 
 
 '''
@@ -128,5 +128,5 @@ The following function evaluates the fitness for a list of vectors
 def evaluate_lst(population):
     fitness = []
     for vector in population:
-        fitness.append(f1(vector))
+        fitness.append(f6(vector))
     return fitness
