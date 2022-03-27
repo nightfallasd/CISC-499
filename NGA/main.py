@@ -12,7 +12,7 @@ dimension = 30
 Range = [-32, 32]
 tournament_size = 5
 generation = 2000
-parent_number = 20
+parent_number = 1
 mutation_rate = 0.9
 m = 4
 m0 = 4
@@ -42,14 +42,14 @@ def runNGA():
     population = initialization.initialization(dimension, Range[0], Range[1], population_size)
     # let the population loop through generation
     generation_number = 0
+    dominance = []
     for i in range(generation):
         generation_number += 1
         next_generation(tournament_size)
         if generation_number % 400 == 0:
-            print("After", generation_number, "generations:")
+            #print("After", generation_number, "generations:")
             net = build.network.copy()
             duplicate = []
-
             # count how many individuals are the same in the population
             for j in range(population_size):
                 count = 0
@@ -59,12 +59,13 @@ def runNGA():
                 duplicate.append(count)
                 if count > population_size / 2:
                     break
-            print(max(duplicate), "individuals in the population are the same")
+            dominance.append(max(duplicate))
+            #print(max(duplicate), "individuals in the population are the same")
 
             # print the best individual
             net.sort(key=lambda x: x.fitness, reverse=True)
-            print("After", generation_number, "generation:")
-            print("The best individual is:", net[0].id, ", val:", net[0].val)
-            print("The result is:", 1 / net[0].fitness)
-            print()
-    return 1 / net[0].fitness
+            #print("After", generation_number, "generation:")
+            #print("The best individual is:", net[0].id, ", val:", net[0].val)
+            #print("The result is:", 1 / net[0].fitness)
+            #print()
+    return 1 / net[0].fitness, dominance
