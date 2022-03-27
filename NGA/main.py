@@ -9,7 +9,7 @@ import reproduce
 
 population_size = 125
 dimension = 30
-Range = [-32, 32]
+Range = [-32,32]
 tournament_size = 5
 generation = 2000
 parent_number = 20
