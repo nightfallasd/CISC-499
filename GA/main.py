@@ -7,13 +7,14 @@ import reproduce
 
 population_size = 125
 dimension = 30
-Range = [-32, 32]
+Range = [-100, 100]
 tournament_size = 4
 generation = 2000
 parents_number = 20
 mutation_rate = 0.9
-test_num = 50
-show_detail = True
+test_num = 2
+
+
 """
 This function return the next generation of the population
 """
@@ -25,9 +26,9 @@ def next_generation(population, fitness):
     for i in range(parents_number):
         # choose the selection method
 
-        # parent1, parent2 = parent_selection.tournament(population, fitness, tournament_size)
-        parent1 = parent_selection.roulette(population, fitness)
-        parent2 = parent_selection.roulette(population, fitness)
+        parent1, parent2 = parent_selection.tournament(population, fitness, tournament_size)
+        #parent1 = parent_selection.roulette(population, fitness)
+        #parent2 = parent_selection.roulette(population, fitness)
 
         # do the crossover and mutation
         offspring1, offspring2 = reproduce.crossover(parent1, parent2)
@@ -48,53 +49,53 @@ def run():
     population = initialization.initialization(dimension, Range[0], Range[1], population_size)
     fitness = evaluation.evaluate(population)
     current_generation = 0
-
+    dominance = []
     for i in range(generation):
         current_generation += 1
         population, fitness = next_generation(population, fitness)
 
-        #show the improvement of fitness of the generation increase and the coverge of the population
-        if show_detail is True:
-            best_fitness = 0
-            best = []
-            if current_generation % 500 == 0:
-                print("After",current_generation, "generations:")
-                duplicate = []
-                for j in range(population_size):
-                    dup = population.count(population[j])
-                    duplicate.append(dup)
-                    if dup >= population_size:
-                        break
-                print(max(duplicate), "individuals in the population are the same")
+        #show the improvement of fitness of the generation increase and the convergenec of the population
 
-                #print the best individual and its fitness
-                for k in range(len(fitness)):
-                    if fitness[k] >= best_fitness:
-                        best_vector = population[k]
-                        best_fitness = fitness[k]
-                        best = population[k]
-                print("The best individual is", best)
-                print("The best fitness is ", 1 / best_fitness)
-                print()
-    best_fitness = 0
-    for i in range(len(fitness)):
-        if fitness[i] >= best_fitness:
-            best_fitness = fitness[i]
-    return 1 / best_fitness
+        best_fitness = 0
+        best = []
+        if current_generation % 500 == 0:
+            #print("After",current_generation, "generations:")
+            duplicate = []
+            for j in range(population_size):
+                dup = population.count(population[j])
+                duplicate.append(dup)
+                if dup >= population_size:
+                    break
+            dominance.append(max(duplicate))
+
+            #print the best individual and its fitness
+            for k in range(len(fitness)):
+                if fitness[k] >= best_fitness:
+                    best_vector = population[k]
+                    best_fitness = fitness[k]
+                    best = population[k]
+            #print("The best individual is", best)
+            #print("The best fitness is ", 1 / best_fitness)
+            #print()
+
+    return 1 / best_fitness, dominance
 
 
 def main():
+    convergence = []
+    average_convergence = []
     sum_fitness = 0
-    best_result = 9999999999
     for i in range(test_num):
-        result = run()
-        sum_fitness += result
-        if result < best_result:
-            best_result = result
-    print("The sum fitness is", sum_fitness)
+        fitness, dominance = run()
+        sum_fitness += fitness
+        convergence.append(dominance)
+    for j in range(len(convergence[0])):
+        total = 0
+        for k in range(len(convergence)):
+            total += convergence[k][j]
+        average_convergence.append(total / test_num)
     print("The average fitness is", sum_fitness / test_num)
-    print("The best result is", best_result)
+    print("The diversity of population as generation grow:", average_convergence)
 
 
 main()
-
