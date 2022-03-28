@@ -93,7 +93,7 @@ def main():
         total = 0
         for k in range(len(convergence)):
             total += convergence[k][j]
-        average_convergence.append(total / test_num)
+        average_convergence.append(total / test_num /population_size)
     print("The average fitness is", sum_fitness / test_num)
     print("The diversity of population as generation grow:", average_convergence)
 
