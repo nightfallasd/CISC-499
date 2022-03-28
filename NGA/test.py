@@ -5,7 +5,7 @@ import build
 """
 This file runs the algorithm for several times, then find the average
 """
-
+population_size = 125
 repeat = 20
 totalSum = 0
 best_result = 99999999
@@ -27,6 +27,6 @@ for j in range(len(convergence[0])):
         total += convergence[k][j]
     average_convergence.append(total/repeat)
 
-print("The average result for ", repeat, " runs is: ", totalSum / repeat)
+print("The average result for ", repeat, " runs is: ", totalSum / repeat / population_size)
 print("The best result for ", repeat, " runs is: ", best_result)
 print("The diversity of population as generation grow:", average_convergence)
