@@ -25,8 +25,8 @@ for j in range(len(convergence[0])):
     total = 0
     for k in range(len(convergence)):
         total += convergence[k][j]
-    average_convergence.append(total/repeat)
+    average_convergence.append(total/repeat/ population_size)
 
-print("The average result for ", repeat, " runs is: ", totalSum / repeat / population_size)
+print("The average result for ", repeat, " runs is: ", totalSum / repeat )
 print("The best result for ", repeat, " runs is: ", best_result)
 print("The diversity of population as generation grow:", average_convergence)
