@@ -58,7 +58,7 @@ def run():
 
         best_fitness = 0
         best = []
-        if current_generation % 500 == 0:
+        if current_generation % 400 == 0:
             #print("After",current_generation, "generations:")
             duplicate = []
             for j in range(population_size):
