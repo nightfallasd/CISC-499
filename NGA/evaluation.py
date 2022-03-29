@@ -8,7 +8,7 @@ Modified by Yizhou Xiao
 
 
 """
-#range is [-32. 32]
+#range is [-32, 32]
 """
 def f1(vector):
     D = len(vector)
@@ -20,15 +20,15 @@ def f1(vector):
         num2 += math.cos(2 * math.pi * value)
     minuend = -20 * math.exp(-0.2 * math.sqrt(num1 / D))
     subtrahend = math.exp(num2 / D)
-    result = minuend - subtrahend + 20 + math.e
+    result = minuend - subtrahend
     if result == 0:
         return 0
     else:
-        return 1/ abs(result)
+        return 1 / abs(result)
 
 
 """
-#range is [-100. 100]
+#range is [-100, 100]
 """
 def f2(vector):
     result = 0
@@ -47,8 +47,8 @@ def f3(vector):
     num1 = 0
     num2 = 0
     for value in vector:
-        num1 = abs(num1 + value)
-        num2 = abs(num2 * value)
+        num1 += abs(value)
+        num2 *= abs(value)
     result = num1 + num2
     if result == 0:
         return 0
@@ -57,7 +57,7 @@ def f3(vector):
 
 
 """
-#range is [-1.28. 1.28]
+#range is [-1.28, 1.28]
 """
 def f4(vector):
     result = 0
@@ -83,7 +83,7 @@ def f5(vector):
 
 
 """
-#range is [-600. 600]
+#range is [-600, 600]
 """
 def f6(vector):
     num1 = 0
@@ -91,7 +91,7 @@ def f6(vector):
     for i in range(len(vector)):
         num1 += vector[i] ** 2
         num2 *= math.cos(vector[i] / (math.sqrt(i+1)))+1
-    result = num1 / 4000 + num2
+    result = num1 / 4000 - num2
     if result == 0:
         return 0
     else:
@@ -99,7 +99,7 @@ def f6(vector):
 
 
 """
-#range is [-32. 32]
+#range is [-32, 32]
 """
 def f7(vector):
     result = 0
