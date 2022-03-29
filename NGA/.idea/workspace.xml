@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa16f158-6583-423b-a548-9547244aef05" name="Changes" comment="" />
+    <list default="true" id="aa16f158-6583-423b-a548-9547244aef05" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../GA/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GA/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GA/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GA/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NGA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NGA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

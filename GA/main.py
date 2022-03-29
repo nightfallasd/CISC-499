@@ -7,12 +7,12 @@ import reproduce
 
 population_size = 125
 dimension = 30
-Range = [-100, 100]
+Range = [-32, 32]
 tournament_size = 4
 generation = 2000
-parents_number = 20
+parents_number = 30
 mutation_rate = 0.9
-test_num = 2
+test_num = 50
 
 
 """
@@ -26,9 +26,9 @@ def next_generation(population, fitness):
     for i in range(parents_number):
         # choose the selection method
 
-        parent1, parent2 = parent_selection.tournament(population, fitness, tournament_size)
-        #parent1 = parent_selection.roulette(population, fitness)
-        #parent2 = parent_selection.roulette(population, fitness)
+        #parent1, parent2 = parent_selection.tournament(population, fitness, tournament_size)
+        parent1 = parent_selection.roulette(population, fitness)
+        parent2 = parent_selection.roulette(population, fitness)
 
         # do the crossover and mutation
         offspring1, offspring2 = reproduce.crossover(parent1, parent2)
@@ -58,7 +58,7 @@ def run():
 
         best_fitness = 0
         best = []
-        if current_generation % 500 == 0:
+        if current_generation % 400 == 0:
             #print("After",current_generation, "generations:")
             duplicate = []
             for j in range(population_size):
@@ -82,11 +82,15 @@ def run():
 
 
 def main():
+    best = 9999999
     convergence = []
     average_convergence = []
     sum_fitness = 0
     for i in range(test_num):
         fitness, dominance = run()
+        if fitness < best:
+            best = fitness
+            #print("The best fitness is ", best)
         sum_fitness += fitness
         convergence.append(dominance)
     for j in range(len(convergence[0])):
@@ -94,6 +98,7 @@ def main():
         for k in range(len(convergence)):
             total += convergence[k][j]
         average_convergence.append(total / test_num /population_size)
+    print("The best fitness is", best)
     print("The average fitness is", sum_fitness / test_num)
     print("The diversity of population as generation grow:", average_convergence)
 
