@@ -21,7 +21,7 @@ def f1(vector):
         num2 += math.cos(2 * math.pi * value)
     minuend = -20 * math.exp(-0.2 * math.sqrt(num1 / D))
     subtrahend = math.exp(num2 / D)
-    result = minuend - subtrahend
+    result = minuend - subtrahend + math.exp(1) + 20
     if result == 0:
         return 0
     else:
